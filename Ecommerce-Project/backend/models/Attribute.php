@@ -1,4 +1,5 @@
 <?php
+namespace App\Models;
 
 abstract class Attribute {
     protected $id;
@@ -23,17 +24,23 @@ abstract class Attribute {
         return $this->value;
     }
 
-    abstract public function display();
-}
-
-class ColorAttribute extends Attribute {
-    public function display() {
-        return "Color: " . $this->value;
-    }
+    abstract public function getType();
 }
 
 class SizeAttribute extends Attribute {
-    public function display() {
-        return "Size: " . $this->value;
+    public function getType() {
+        return 'size';
+    }
+}
+
+class ColorAttribute extends Attribute {
+    public function getType() {
+        return 'color';
+    }
+}
+
+class MaterialAttribute extends Attribute {
+    public function getType() {
+        return 'material';
     }
 }
