@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<!-- File: public/index.html or public/test.html -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GraphQL Test Page</title>
+    <title>GraphQL Product Test</title>
 </head>
 <body>
-    <h1>GraphQL Test Page</h1>
-    <button onclick="sendQuery()">Send Query</button>
+    <h1>GraphQL Product Test</h1>
+    <button onclick="sendQuery()">Fetch Products</button>
     <pre id="response"></pre>
+    <div id="error"></div>
 
     <script>
         function sendQuery() {
@@ -17,12 +17,15 @@
                     products {
                         id
                         name
-                        description
                         price
+                        imageUrl
+                        description
                         category
                         stock
+                        brand
                         createdAt
                         updatedAt
+                        inStock
                     }
                 }
             `;
@@ -34,26 +37,33 @@
                 },
                 body: JSON.stringify({ query })
             })
-            .then(response => response.json())
+            .then(response => {
+                // Check if response is OK
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
-                // Add error handling
+                // Check for GraphQL errors
                 if (data.errors) {
-                    throw new Error(data.errors.map(err => err.message).join(', '));
+                    throw new Error(data.errors.map(e => e.message).join(', '));
                 }
 
-                // Log the entire response for debugging
-                console.log('Full Response:', data);
-
-                // Ensure we're accessing the correct path
-                const products = data.data?.products || [];
-                
+                // Display products
+                const products = data.data.products;
                 document.getElementById('response').textContent = JSON.stringify(products, null, 2);
+                document.getElementById('error').textContent = '';
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('response').textContent = 'Error: ' + error.message;
+                document.getElementById('error').textContent = `Error: ${error.message}`;
+                document.getElementById('response').textContent = '';
             });
         }
+
+        // Optional: Automatically run query on page load
+        document.addEventListener('DOMContentLoaded', sendQuery);
     </script>
 </body>
 </html>

@@ -57,3 +57,95 @@
         "trace": "#0 {main}"
     }
 }
+[21-Dec-2024 16:46:44 UTC] {
+    "timestamp": "2024-12-21 16:46:44",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}
+[21-Dec-2024 16:46:51 UTC] {
+    "timestamp": "2024-12-21 16:46:51",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        description\\n                        price\\n                        category\\n                        stock\\n                        createdAt\\n                        updatedAt\\n                    }\\n                }\\n            \"}"
+    }
+}
+[21-Dec-2024 16:47:07 UTC] {
+    "timestamp": "2024-12-21 16:47:07",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        description\\n                        price\\n                        category\\n                        stock\\n                        createdAt\\n                        updatedAt\\n                    }\\n                }\\n            \"}"
+    }
+}
+[21-Dec-2024 16:47:18 UTC] {
+    "timestamp": "2024-12-21 16:47:18",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[21-Dec-2024 16:48:24 UTC] {
+    "timestamp": "2024-12-21 16:48:24",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        description\\n                        price\\n                        category\\n                        stock\\n                        createdAt\\n                        updatedAt\\n                    }\\n                }\\n            \"}"
+    }
+}
+[21-Dec-2024 16:48:45 UTC] {
+    "timestamp": "2024-12-21 16:48:45",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}
+[21-Dec-2024 16:52:09 UTC] {
+    "timestamp": "2024-12-21 16:52:09",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        price\\n                        imageUrl\\n                        description\\n                        category\\n                        stock\\n                        brand\\n                        createdAt\\n                        updatedAt\\n                    }\\n                }\\n            \"}"
+    }
+}
+[21-Dec-2024 16:52:09 UTC] {
+    "timestamp": "2024-12-21 16:52:09",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        price\\n                        imageUrl\\n                        description\\n                        category\\n                        stock\\n                        brand\\n                        createdAt\\n                        updatedAt\\n                    }\\n                }\\n            \"}"
+    }
+}
+[21-Dec-2024 16:52:09 UTC] {
+    "timestamp": "2024-12-21 16:52:09",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        price\\n                        imageUrl\\n                        description\\n                        category\\n                        stock\\n                        brand\\n                        createdAt\\n                        updatedAt\\n                    }\\n                }\\n            \"}"
+    }
+}
+[21-Dec-2024 16:52:20 UTC] {
+    "timestamp": "2024-12-21 16:52:20",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}
+[21-Dec-2024 16:56:03 UTC] {
+    "timestamp": "2024-12-21 16:56:03",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}
+[21-Dec-2024 16:56:12 UTC] {
+    "timestamp": "2024-12-21 16:56:12",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        price\\n                        imageUrl\\n                        description\\n                        category\\n                        stock\\n                        brand\\n                        createdAt\\n                        updatedAt\\n                        inStock\\n                    }\\n                }\\n            \"}"
+    }
+}
+[21-Dec-2024 16:56:12 UTC] {
+    "timestamp": "2024-12-21 16:56:12",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        price\\n                        imageUrl\\n                        description\\n                        category\\n                        stock\\n                        brand\\n                        createdAt\\n                        updatedAt\\n                        inStock\\n                    }\\n                }\\n            \"}"
+    }
+}
