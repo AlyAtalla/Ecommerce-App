@@ -1,24 +1,16 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ProductPage from './pages/ProductPage';
-import CartPage from './pages/CartPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
+// filepath: /c:/Users/ANDALOS/Documents/GitHub/Ecommerce-App/Ecommerce-Project/frontend/src/App.js
+import React, { Component } from 'react';
+import ProductList from './components/ProductList';
 import './styles/main.css';
 
-function App() {
-    return (
-        <Router>
-            <Header />
-            <Switch>
-                <Route path="/" exact component={HomePage} />
-                <Route path="/product/:id" component={ProductPage} />
-                <Route path="/cart" component={CartPage} />
-            </Switch>
-            <Footer />
-        </Router>
-    );
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <ProductList />
+            </div>
+        );
+    }
 }
 
 export default App;
