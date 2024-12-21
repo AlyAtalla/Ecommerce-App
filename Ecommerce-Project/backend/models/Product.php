@@ -1,44 +1,35 @@
 <?php
+// filepath: /src/Models/Product.php
+namespace App\Models;
 
-abstract class ProductModel {
+abstract class Product {
     protected $id;
     protected $name;
+    protected $inStock;
     protected $description;
-    protected $price;
+    protected $category;
+    protected $brand;
 
-    public function __construct($id, $name, $description, $price) {
+    public function __construct($id, $name, $inStock, $description, $category, $brand) {
         $this->id = $id;
         $this->name = $name;
+        $this->inStock = $inStock;
         $this->description = $description;
-        $this->price = $price;
+        $this->category = $category;
+        $this->brand = $brand;
     }
 
-    abstract public function save();
-    abstract public function delete();
+    abstract public function getType();
 }
 
-class Product extends ProductModel {
-    public function save() {
-        // Logic to save the product to the database
+class ClothesProduct extends Product {
+    public function getType() {
+        return 'clothes';
     }
+}
 
-    public function delete() {
-        // Logic to delete the product from the database
-    }
-
-    public function getId() {
-        return $this->id;
-    }
-
-    public function getName() {
-        return $this->name;
-    }
-
-    public function getDescription() {
-        return $this->description;
-    }
-
-    public function getPrice() {
-        return $this->price;
+class TechProduct extends Product {
+    public function getType() {
+        return 'tech';
     }
 }
