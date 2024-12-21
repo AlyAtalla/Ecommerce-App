@@ -1,15 +1,24 @@
 <?php
-// filepath: /c:/Users/ANDALOS/Documents/GitHub/Ecommerce-App/Ecommerce-Project/backend/bootstrap.php
+
 require 'vendor/autoload.php';
 
 use GraphQL\Type\Schema;
 use GraphQL\GraphQL;
-use App\GraphQL\Types\MutationType;
+use App\Resolvers\OrderResolver;
 
 // Define the schema
 $schema = new Schema([
-    'query' => null, // Define your query type here if needed
-    'mutation' => new MutationType(),
+    'query' => null, // Define your query type here
+    'mutation' => new MutationType([
+        'createOrder' => [
+            'type' => Type::order(),
+            'args' => [
+                'productId' => Type::nonNull(Type::id()),
+                'quantity' => Type::nonNull(Type::int()),
+            ],
+            'resolve' => [new OrderResolver(), 'createOrder'],
+        ],
+    ]),
 ]);
 
 // Handle the request
