@@ -7,6 +7,7 @@ abstract class Product {
     protected $name;
     protected $inStock;
     protected $description;
+    protected $imageUrl;
     protected $category;
     protected $brand;
 

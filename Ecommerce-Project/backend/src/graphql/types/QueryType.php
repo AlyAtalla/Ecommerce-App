@@ -4,44 +4,21 @@ namespace App\GraphQL\Types;
 
 use GraphQL\Type\Definition\Type;
 use GraphQL\Type\Definition\ObjectType;
+use App\Models\Product;
 
 class QueryType extends ObjectType
 {
     public function __construct()
     {
         $config = [
-            'name' => 'Query',
             'fields' => [
                 'products' => [
-                    'type' => Type::listOf(ProductType::getInstance()),
+                    'type' => Type::listOf(new ProductType()),
                     'resolve' => function () {
                         // Fetch products from the database or any other source
-                        return [
-                            [
-                                'id' => '1',
-                                'name' => 'Product 1',
-                                'description' => 'Description 1',
-                                'price' => 99.99,
-                                'category' => 'Electronics',
-                                'stock' => 10,
-                                'createdAt' => '2023-01-01T00:00:00Z',
-                                'updatedAt' => '2023-01-01T00:00:00Z',
-                            ],
-                            [
-                                'id' => '2',
-                                'name' => 'Product 2',
-                                'description' => 'Description 2',
-                                'price' => 149.99,
-                                'category' => 'Books',
-                                'stock' => 5,
-                                'createdAt' => '2023-02-01T00:00:00Z',
-                                'updatedAt' => '2023-02-01T00:00:00Z',
-                            ],
-                            // Add more products as needed
-                        ];
-                    }
+                        return Product::all();
+                    },
                 ],
-                // Add more query fields as needed
             ],
         ];
         parent::__construct($config);

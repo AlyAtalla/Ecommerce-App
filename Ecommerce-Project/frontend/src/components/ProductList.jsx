@@ -36,7 +36,12 @@ class ProductList extends Component {
             }
             return response.json();
         })
-        .then(data => this.setState({ products: data.data.products }))
+        .then(data => {
+            if (data.errors) {
+                throw new Error(data.errors.map(error => error.message).join(', '));
+            }
+            this.setState({ products: data.data.products });
+        })
         .catch(error => this.setState({ error }));
     }
 
