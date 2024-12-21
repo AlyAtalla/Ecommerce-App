@@ -55,3 +55,14 @@ input AttributeInput {
   name: String!
   value: String!
 }
+
+type Order {
+    id: ID!
+    product: Product!
+    quantity: Int!
+    total: Float!
+}
+
+type Mutation {
+    createOrder(productId: ID!, quantity: Int!): Order!
+}
