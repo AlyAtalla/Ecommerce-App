@@ -28,9 +28,18 @@ class ProductType extends ObjectType
                 'description' => Type::string(),
                 'category' => Type::string(),
                 'stock' => Type::int(),
-                // Add createdAt and updatedAt fields
-                'createdAt' => Type::string(),
-                'updatedAt' => Type::string(),
+                
+                // Add inStock as an alias or computed field
+                'inStock' => [
+                    'type' => Type::boolean(),
+                    'resolve' => function($product) {
+                        // Convert stock to boolean
+                        return ($product['stock'] ?? 0) > 0;
+                    }
+                ],
+                
+                // Add brand field
+                'brand' => Type::string(),
             ],
         ];
         parent::__construct($config);

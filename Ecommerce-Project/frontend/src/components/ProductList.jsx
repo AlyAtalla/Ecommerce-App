@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ProductCard from './ProductCard.jsx';
-import './ProductList.css';
+import ProductCard from './ProductCard';
+import '../styles/ProductList.css';
 
 class ProductList extends Component {
     constructor(props) {

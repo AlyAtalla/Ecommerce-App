@@ -24,7 +24,8 @@ class QueryType extends ObjectType
                                 'description' => 'High-end smartphone with advanced features',
                                 'category' => 'Electronics',
                                 'stock' => 50,
-                                'createdAt' => date('c'), // ISO 8601 format
+                                'brand' => 'TechBrand',
+                                'createdAt' => date('c'),
                                 'updatedAt' => date('c')
                             ],
                             [
@@ -34,7 +35,8 @@ class QueryType extends ObjectType
                                 'imageUrl' => 'https://example.com/laptop.jpg',
                                 'description' => 'Powerful laptop for professional use',
                                 'category' => 'Computers',
-                                'stock' => 25,
+                                'stock' => 0,
+                                'brand' => 'ProTech',
                                 'createdAt' => date('c'),
                                 'updatedAt' => date('c')
                             ]
