@@ -1,33 +1,31 @@
 <?php
+// filepath: /src/Models/Category.php
+namespace App\Models;
 
 abstract class Category {
-    protected $id;
     protected $name;
 
-    public function __construct($id, $name) {
-        $this->id = $id;
+    public function __construct($name) {
         $this->name = $name;
     }
 
-    public function getId() {
-        return $this->id;
-    }
-
-    public function getName() {
-        return $this->name;
-    }
-
-    abstract public function save();
+    abstract public function getType();
 }
 
-class ProductCategory extends Category {
-    public function save() {
-        // Logic to save the category to the database
+class AllCategory extends Category {
+    public function getType() {
+        return 'all';
     }
 }
 
-class ServiceCategory extends Category {
-    public function save() {
-        // Logic to save the category to the database
+class ClothesCategory extends Category {
+    public function getType() {
+        return 'clothes';
+    }
+}
+
+class TechCategory extends Category {
+    public function getType() {
+        return 'tech';
     }
 }
