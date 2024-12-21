@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- File: public/test.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GraphQL Test</title>
+</head>
+<body>
+    <h1>GraphQL Test</h1>
+    <button onclick="sendQuery()">Send Query</button>
+    <pre id="response"></pre>
+
+    <script>
+        function sendQuery() {
+            const query = `
+                {
+                    products {
+                        id
+                        name
+                        description
+                        price
+                        category
+                        stock
+                        createdAt
+                        updatedAt
+                    }
+                }
+            `;
+
+            fetch('index.php', { // Ensure the path is correct if using a different endpoint
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('response').textContent = 'Error: ' + error;
+            });
+        }
+    </script>
+</body>
+</html>

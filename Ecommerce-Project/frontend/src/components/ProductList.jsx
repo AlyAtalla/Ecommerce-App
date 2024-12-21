@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import ProductCard from './ProductCard.jsx';
 
 class ProductList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            error: null
         };
     }
 
@@ -21,36 +23,33 @@ class ProductList extends Component {
                         products {
                             id
                             name
-                            inStock
-                            description
-                            category {
-                                name
-                            }
-                            brand
+                            price
+                            imageUrl
                         }
                     }
                 `
             })
         })
-        .then(response => response.json())
-        .then(data => this.setState({ products: data.data.products }));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => this.setState({ products: data.data.products }))
+        .catch(error => this.setState({ error }));
     }
 
     render() {
-        const { products } = this.state;
+        const { products, error } = this.state;
+        if (error) {
+            return <div>Error: {error.message}</div>;
+        }
         return (
-            <div>
-                <h1>Product List</h1>
-                <ul>
-                    {products.map(product => (
-                        <li key={product.id}>
-                            <h2>{product.name}</h2>
-                            <p>{product.description}</p>
-                            <p>Category: {product.category.name}</p>
-                            <p>Brand: {product.brand}</p>
-                        </li>
-                    ))}
-                </ul>
+            <div className="category-list">
+                {products.map(product => (
+                    <ProductCard key={product.id} product={product} />
+                ))}
             </div>
         );
     }
