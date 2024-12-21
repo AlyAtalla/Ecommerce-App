@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductCard from './ProductCard.jsx';
+import './ProductList.css';
 
 class ProductList extends Component {
     constructor(props) {
@@ -25,6 +26,10 @@ class ProductList extends Component {
                             name
                             price
                             imageUrl
+                            inStock
+                            description
+                            category
+                            brand
                         }
                     }
                 `

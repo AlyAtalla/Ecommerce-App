@@ -1,13 +1,14 @@
 <?php
-// filepath: /src/Models/Product.php
+// filepath: /Models/Product.php
 namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
 
 abstract class Product {
     protected $id;
     protected $name;
     protected $inStock;
     protected $description;
-    protected $imageUrl;
     protected $category;
     protected $brand;
 

@@ -1,14 +1,8 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .category-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  padding: 2rem;
 }
 
 .product-card {

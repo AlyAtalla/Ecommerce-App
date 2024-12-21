@@ -6,74 +6,103 @@ use GraphQL\Type\Schema;
 use App\GraphQL\Types\QueryType;
 use App\GraphQL\Types\MutationType;
 
-// Enable error reporting during development
+// Comprehensive error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/../graphql_error.log');
 
-// Set headers
-header('Content-Type: application/json');
+// Set headers to prevent Quirks Mode and ensure proper content type
+header('X-UA-Compatible: IE=edge');
+header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 // Handle preflight requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
     exit;
 }
 
-// Ensure only POST requests are processed
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405); // Method Not Allowed
-    echo json_encode([
-        'errors' => [
-            ['message' => 'Method Not Allowed. Use POST.']
-        ]
-    ]);
-    exit;
+// Logging function
+function logGraphQLError($message, $context = []) {
+    error_log(json_encode([
+        'timestamp' => date('Y-m-d H:i:s'),
+        'message' => $message,
+        'context' => $context
+    ], JSON_PRETTY_PRINT));
 }
 
 try {
-    // Define the schema
+    // Ensure only POST requests are processed
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        throw new \Exception('Only POST requests are allowed');
+    }
+
+    // Get raw input
+    $rawInput = file_get_contents('php://input');
+
+    // Log raw input for debugging
+    logGraphQLError('Raw Input', ['input' => $rawInput]);
+
+    // Validate input
+    if (empty($rawInput)) {
+        http_response_code(400);
+        throw new \Exception('No query provided');
+    }
+
+    // Decode input
+    $input = json_decode($rawInput, true);
+
+    // Check for JSON decoding errors
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        http_response_code(400);
+        throw new \Exception('Invalid JSON: ' . json_last_error_msg());
+    }
+
+    // Validate query
+    if (!isset($input['query'])) {
+        http_response_code(400);
+        throw new \Exception('No GraphQL query found in the request');
+    }
+
+    // Define schema
     $schema = new Schema([
         'query' => new QueryType(),
         'mutation' => new MutationType(),
     ]);
 
-    // Get raw input
-    $rawInput = file_get_contents('php://input');
-    $input = json_decode($rawInput, true);
+    // Execute query
+    $result = GraphQL::executeQuery(
+        $schema, 
+        $input['query'], 
+        null, 
+        null, 
+        $input['variables'] ?? null
+    );
 
-    // Check if query is provided
-    if (!isset($input['query'])) {
-        throw new \Exception('No query provided');
-    }
-
-    $query = $input['query'];
-    $variableValues = isset($input['variables']) ? $input['variables'] : null;
-
-    $result = GraphQL::executeQuery($schema, $query, null, null, $variableValues);
+    // Convert result to array
     $output = $result->toArray();
-} catch (\GraphQL\Error\SyntaxError $e) {
-    $output = [
-        'errors' => [
-            [
-                'message' => 'GraphQL Syntax Error: ' . $e->getMessage(),
-                'locations' => $e->getLocations(),
-            ],
-        ],
-    ];
-    http_response_code(400); // Bad Request
-} catch (\Exception $e) {
-    // Handle other exceptions
+
+} catch (\Throwable $e) {
+    // Comprehensive error handling
     $output = [
         'errors' => [
             [
                 'message' => $e->getMessage(),
-            ],
-        ],
+                'trace' => $e->getTraceAsString()
+            ]
+        ]
     ];
-    http_response_code(400); // Bad Request
+    
+    // Log the full error
+    logGraphQLError('GraphQL Error', [
+        'message' => $e->getMessage(),
+        'trace' => $e->getTraceAsString()
+    ]);
 }
 
-// Ensure the response is in JSON format
+// Ensure JSON output
 echo json_encode($output);

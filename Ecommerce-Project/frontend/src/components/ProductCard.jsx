@@ -1,17 +1,16 @@
-// filepath: /c:/Users/ANDALOS/Documents/GitHub/Ecommerce-App/Ecommerce-Project/frontend/src/components/ProductCard.jsx
-import React, { Component } from 'react';
+import React from 'react';
+import './ProductCard.css';
 
-class ProductCard extends Component {
-    render() {
-        const { product } = this.props;
-        return (
-            <div className="product-card">
-                <img src={product.imageUrl} alt={product.name} />
-                <h2>{product.name}</h2>
-                <p>${product.price}</p>
-            </div>
-        );
-    }
-}
+const ProductCard = ({ product }) => {
+    return (
+        <div className="product-card">
+            <img src={product.imageUrl} alt={product.name} />
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+            <p className="price">${product.price.toFixed(2)}</p>
+            <button className="add-to-cart">Add to Cart</button>
+        </div>
+    );
+};
 
 export default ProductCard;
