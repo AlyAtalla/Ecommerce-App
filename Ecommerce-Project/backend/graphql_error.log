@@ -178,3 +178,10 @@
         "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
     }
 }
+[22-Dec-2024 05:29:35 UTC] {
+    "timestamp": "2024-12-22 05:29:35",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}
