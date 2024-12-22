@@ -24,22 +24,39 @@ class ProductType extends ObjectType
                 'id' => Type::nonNull(Type::id()),
                 'name' => Type::nonNull(Type::string()),
                 'price' => Type::nonNull(Type::float()),
+                
+                // Main image and multiple images
                 'imageUrl' => Type::string(),
+                'images' => Type::listOf(Type::string()),
+                
+                // Product details
                 'description' => Type::string(),
                 'category' => Type::string(),
-                'stock' => Type::int(),
                 'brand' => Type::string(),
-                'createdAt' => Type::string(),
-                'updatedAt' => Type::string(),
                 
-                // Add inStock as a computed field
+                // Inventory
+                'stock' => Type::int(),
+                
+                // Computed fields
                 'inStock' => [
                     'type' => Type::boolean(),
                     'resolve' => function($product) {
-                        // Convert stock to boolean
                         return ($product['stock'] ?? 0) > 0;
                     }
                 ],
+                
+                // Pricing and discounts
+                'originalPrice' => Type::float(),
+                'discountPercentage' => Type::float(),
+                
+                // Metadata
+                'createdAt' => Type::string(),
+                'updatedAt' => Type::string(),
+                
+                // Additional product attributes
+                'specifications' => Type::listOf(Type::string()),
+                'rating' => Type::float(),
+                'reviewCount' => Type::int()
             ],
         ];
         parent::__construct($config);

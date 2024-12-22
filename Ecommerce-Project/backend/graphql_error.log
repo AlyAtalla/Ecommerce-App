@@ -149,3 +149,32 @@
         "input": "{\"query\":\"\\n                {\\n                    products {\\n                        id\\n                        name\\n                        price\\n                        imageUrl\\n                        description\\n                        category\\n                        stock\\n                        brand\\n                        createdAt\\n                        updatedAt\\n                        inStock\\n                    }\\n                }\\n            \"}"
     }
 }
+[21-Dec-2024 16:57:23 UTC] {
+    "timestamp": "2024-12-21 16:57:23",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[22-Dec-2024 05:11:58 UTC] {
+    "timestamp": "2024-12-22 05:11:58",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}
+[22-Dec-2024 05:17:59 UTC] {
+    "timestamp": "2024-12-22 05:17:59",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}
+[22-Dec-2024 05:19:06 UTC] {
+    "timestamp": "2024-12-22 05:19:06",
+    "message": "Raw Input",
+    "context": {
+        "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
+    }
+}

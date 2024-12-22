@@ -2,29 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GraphQL Product Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
 </head>
 <body>
-    <h1>GraphQL Product Test</h1>
-    <button onclick="sendQuery()">Fetch Products</button>
-    <pre id="response"></pre>
-    <div id="error"></div>
+    <div class="container">
+        <header class="header">
+            <h1>Product Catalog</h1>
+        </header>
+
+        <nav class="category-nav" id="categoryNav">
+            <!-- Categories will be dynamically populated -->
+        </nav>
+
+        <div id="error"></div>
+        <div id="products" class="products-grid"></div>
+    </div>
 
     <script>
-        function sendQuery() {
+        function fetchCategories() {
             const query = `
                 {
-                    products {
+                    categories
+                }
+            `;
+
+            fetch('graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const categoryNav = document.getElementById('categoryNav');
+                
+                // Add "All" category button
+                const allBtn = document.createElement('button');
+                allBtn.textContent = 'All Products';
+                allBtn.classList.add('category-btn');
+                allBtn.onclick = () => fetchProducts();
+                categoryNav.appendChild(allBtn);
+
+                // Add category buttons
+                data.data.categories.forEach(category => {
+                    const btn = document.createElement('button');
+                    btn.textContent = category;
+                    btn.classList.add('category-btn');
+                    btn.onclick = () => fetchProducts(category);
+                    categoryNav.appendChild(btn);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching categories:', error);
+            });
+        }
+
+        function fetchProducts(category = null) {
+            const query = `
+                {
+                    products${category ? `(category: "${category}")` : ''} {
                         id
                         name
                         price
-                        imageUrl
+                        images
                         description
                         category
                         stock
-                        brand
-                        createdAt
-                        updatedAt
                         inStock
                     }
                 }
@@ -37,33 +82,58 @@
                 },
                 body: JSON.stringify({ query })
             })
-            .then(response => {
-                // Check if response is OK
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                // Check for GraphQL errors
+                const productsContainer = document.getElementById('products');
+                productsContainer.innerHTML = ''; // Clear previous products
+
                 if (data.errors) {
                     throw new Error(data.errors.map(e => e.message).join(', '));
                 }
 
-                // Display products
                 const products = data.data.products;
-                document.getElementById('response').textContent = JSON.stringify(products, null, 2);
-                document.getElementById('error').textContent = '';
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('product-card');
+
+                    // Product Images Carousel
+                    const imagesContainer = document.createElement('div');
+                    imagesContainer.classList.add('product-images');
+                    product.images.forEach(imageUrl => {
+                        const img = document.createElement('img');
+                        img.src = imageUrl;
+                        img.alt = product.name;
+                        imagesContainer.appendChild(img);
+                    });
+
+                    // Product Info
+                    const infoContainer = document.createElement('div');
+                    infoContainer.classList.add('product-info');
+                    infoContainer.innerHTML = `
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-stock">
+                            ${product.inStock ? 'In Stock' : 'Out of Stock'} 
+                            (${product.stock} available)
+                        </div>
+                    `;
+
+                    productCard.appendChild(imagesContainer);
+                    productCard.appendChild(infoContainer);
+                    productsContainer.appendChild(productCard);
+                });
             })
             .catch(error => {
                 console.error('Error:', error);
                 document.getElementById('error').textContent = `Error: ${error.message}`;
-                document.getElementById('response').textContent = '';
             });
         }
 
-        // Optional: Automatically run query on page load
-        document.addEventListener('DOMContentLoaded', sendQuery);
+        // Fetch categories and initial products on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCategories();
+            fetchProducts();
+        });
     </script>
 </body>
 </html>
