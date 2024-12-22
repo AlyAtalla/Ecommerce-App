@@ -135,5 +135,41 @@
             fetchProducts();
         });
     </script>
+    <div id="debug"></div>
+    <script>
+        function fetchProducts() {
+            const query = `
+                {
+                    products {
+                        id
+                        name
+                        images
+                        imageUrl
+                    }
+                }
+            `;
+
+            fetch('graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display raw data for debugging
+                document.getElementById('debug').textContent = 
+                    JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Run on page load
+        document.addEventListener('DOMContentLoaded', fetchProducts);
+    </script>
+    
 </body>
 </html>
