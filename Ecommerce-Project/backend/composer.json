@@ -2,7 +2,7 @@
     "name": "ecommerce-app/backend",
     "description": "E-commerce application backend",
     "require": {
-        "webonyx/graphql-php": "^14.11",
+        "webonyx/graphql-php": "^15.19",
         "vlucas/phpdotenv": "^5.4"
     },
     "autoload": {

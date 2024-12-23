@@ -185,3 +185,67 @@
         "input": "{\"query\":\"\\n                    query {\\n                        products {\\n                            id\\n                            name\\n                            price\\n                            imageUrl\\n                            inStock\\n                            description\\n                            category\\n                            brand\\n                        }\\n                    }\\n                \"}"
     }
 }
+[23-Dec-2024 07:56:40 UTC] {
+    "timestamp": "2024-12-23 07:56:40",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[23-Dec-2024 07:56:41 UTC] {
+    "timestamp": "2024-12-23 07:56:41",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[23-Dec-2024 07:57:05 UTC] {
+    "timestamp": "2024-12-23 07:57:05",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[23-Dec-2024 07:57:06 UTC] {
+    "timestamp": "2024-12-23 07:57:06",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[23-Dec-2024 07:57:06 UTC] {
+    "timestamp": "2024-12-23 07:57:06",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[23-Dec-2024 07:57:07 UTC] {
+    "timestamp": "2024-12-23 07:57:07",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[23-Dec-2024 08:02:47 UTC] {
+    "timestamp": "2024-12-23 08:02:47",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
+[23-Dec-2024 08:02:48 UTC] {
+    "timestamp": "2024-12-23 08:02:48",
+    "message": "GraphQL Error",
+    "context": {
+        "message": "Only POST requests are allowed",
+        "trace": "#0 {main}"
+    }
+}
