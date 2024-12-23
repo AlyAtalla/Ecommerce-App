@@ -3,7 +3,7 @@
         'name' => 'ecommerce-app/backend',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '7be4141f65732457fdcd4d440b748d26c37ef372',
+        'reference' => 'd0fefd2fab4be3b0bd5d35566d2954bad4f50382',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'ecommerce-app/backend' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '7be4141f65732457fdcd4d440b748d26c37ef372',
+            'reference' => 'd0fefd2fab4be3b0bd5d35566d2954bad4f50382',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

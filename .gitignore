@@ -1,0 +1,67 @@
+# Node.js
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# PHP Composer
+/vendor/
+composer.lock
+
+# Laravel or other PHP frameworks
+/storage/*.key
+/storage/*.log
+/storage/debugbar/*
+/storage/framework/*
+/bootstrap/cache/*
+.env
+
+# Database Files
+*.sql
+*.sqlite
+*.sqlite3
+
+# Build Files
+/public/js
+/public/css
+/public/mix-manifest.json
+
+# React Build
+/build/
+
+# Temporary Files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.idea/
+*.iml
+.vscode/
+*.sublime-*
+
+# Test Coverage
+/coverage/
+Ecommerce-Project/.vs/Ecommerce-Project/FileContentIndex/beae2abd-18f8-4ae3-aa79-7e53eeda6c3c.vsidx
+Ecommerce-Project/.vs/Ecommerce-Project/CopilotIndices/17.12.38.29086/CodeChunks.db
+Ecommerce-Project/.vs/Ecommerce-Project/CopilotIndices/17.12.38.29086/CodeChunks.db-shm
+Ecommerce-Project/.vs/Ecommerce-Project/CopilotIndices/17.12.38.29086/CodeChunks.db-wal
+Ecommerce-Project/.vs/Ecommerce-Project/CopilotIndices/17.12.38.29086/SemanticSymbols.db
+Ecommerce-Project/.vs/Ecommerce-Project/CopilotIndices/17.12.38.29086/SemanticSymbols.db-shm
+Ecommerce-Project/.vs/Ecommerce-Project/CopilotIndices/17.12.38.29086/SemanticSymbols.db-wal
+Ecommerce-Project/.vs/Ecommerce-Project/FileContentIndex/4ed71f1c-b5c1-45f4-99c8-f858c3d23399.vsidx
+Ecommerce-Project/.vs/Ecommerce-Project/FileContentIndex/5a06c599-ddba-4e94-8156-8c64f7d88f48.vsidx
+Ecommerce-Project/.vs/Ecommerce-Project/FileContentIndex/91502dc0-1cd7-408e-878b-12f1f515fe4e.vsidx
+Ecommerce-Project/.vs/Ecommerce-Project/FileContentIndex/a953f817-b9cf-4ed9-bd66-bc48574316c7.vsidx
+Ecommerce-Project/backend/graphql_error.log
+Ecommerce-Project/backend/graphql_error.log
+Ecommerce-Project/backend/graphql_error.log
+Ecommerce-Project/.vs/Ecommerce-Project/FileContentIndex/8ee92bc1-b1a7-4133-bf96-af4b4dcd679f.vsidx
